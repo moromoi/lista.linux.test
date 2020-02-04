@@ -1,0 +1,33 @@
+apply plugin: 'java'
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.testng:testng:7.0.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-2'
+    implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    
+
+
+}
+
+    task testLinux(type: Test) {
+        useTestNG() {
+            suites './src/test/resources/testng-LinuxTest.xml'
+        }
+        if (project.hasProperty('browser')) {
+            systemProperty 'browser', "${browser}"
+        }
+
+        if (project.hasProperty('target')) {
+            systemProperty 'target', "${target}"
+        }
+
+    }
+
+  
