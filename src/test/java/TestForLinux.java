@@ -15,7 +15,7 @@ public class TestForLinux {
 
    @Test
    public void firstTest() throws InterruptedException, IOException {
-       System.setProperty("webdriver.chrome.driver", "C:\\automation\\browser drivers\\chrome\\chromedriver.exe");
+       System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
        driver = new ChromeDriver();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
        driver.manage().window().maximize();
@@ -28,6 +28,6 @@ public class TestForLinux {
 
        Thread.sleep(5000);
        driver.quit();
-       Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe");
+//       Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe");
    }
 }
